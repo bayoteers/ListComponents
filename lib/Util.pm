@@ -40,8 +40,6 @@ sub show_all_components {
     my $classification_name = trim($cgi->param('classification') || '');
     my $classification = Bugzilla::Classification->check($classification_name);
 
-    open(MYFILE, '>>/tmp/bz.txt');
-    print MYFILE "foo ".$classification->id."\n";
     my @products = $user->get_selectable_products($classification->id);
     $vars->{'classifications'} = [{object => undef, products => @products}];
 }
